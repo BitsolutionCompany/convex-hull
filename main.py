@@ -4,13 +4,12 @@ from skimage.morphology import convex_hull_image
 from skimage import data, img_as_float, io
 from skimage.util import invert
 
-image = io.imread('4.jpg')
+image = io.imread('images/4.jpg')
 image = img_as_float(image)
 image = invert(image)
 
 chull = convex_hull_image(image)
-# chull = chull.astype(np.float32) #convert to float32 for aplication example extern
-
+chull = chull.astype(np.float32) #convert to float32 for aplication example extern
 fig, axes = plt.subplots(1, 2, figsize=(8, 4))
 ax = axes.ravel()
 
