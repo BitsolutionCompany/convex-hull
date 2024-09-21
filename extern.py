@@ -4,7 +4,7 @@ from skimage import io, img_as_float
 from skimage.util import invert
 
 #specify the path to image file
-image_path = 'images/2.png'
+image_path = 'images/baixo1.jpg'
 
 # read the image from the file
 img = io.imread(image_path, as_gray=True)
