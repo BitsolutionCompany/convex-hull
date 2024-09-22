@@ -23,24 +23,17 @@ bottom_half = image[half_height:, :]
 chull_top = convex_hull_image(top_half)
 chull_bottom = convex_hull_image(bottom_half)
 
-fig, axes = plt.subplots(2, 2, figsize=(8, 8))
-ax = axes.ravel()
+# Concatena as imagens horizontalmente
+top_row = np.hstack((top_half, chull_top))
+bottom_row = np.hstack((bottom_half, chull_bottom))
 
-# ax[0].set_title('Imagem original (top)')
-ax[0].imshow(top_half, cmap=plt.cm.gray)
-ax[0].set_axis_off()
+# Concatena as imagens verticalmente
+final_image = np.vstack((top_row, bottom_row))
 
-# ax[1].set_title('Imagem transformada (top)')
-ax[1].imshow(chull_top, cmap=plt.cm.gray)
-ax[1].set_axis_off()
-
-# ax[2].set_title('Imagem original (bottom)')
-ax[2].imshow(bottom_half, cmap=plt.cm.gray)
-ax[2].set_axis_off()
-
-# ax[3].set_title('Imagem transformada (bottom)')
-ax[3].imshow(chull_bottom, cmap=plt.cm.gray)
-ax[3].set_axis_off()
-
-plt.tight_layout()
+# Exiba a imagem final
+plt.imshow(final_image, cmap=plt.cm.gray)
+plt.axis('off')
 plt.show()
+
+# Salve a imagem final
+io.imsave('final_image.png', final_image)
